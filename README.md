@@ -46,3 +46,24 @@ Now, if we want to put it inside a JSound schema and give the type a name, we as
   }
 }
 ```
+
+Note that this type declaration does not prevent further fields from being present, which is the default behavior. Also, it does not require the field name to be present -- but if it is, it must be a string.
+
+These are a few instances valid against my-type:
+
+```
+{ "name" : "James Kirk" }
+{ "name" : "Beverly Crusher" }
+{ "name" : "Spock", "origin" : "Vulcan", "age" : 234 }
+{ "spaceship" : "USS Discovery", "name" : "Michael Burnham" }
+{ }
+{ "century" : 23 }
+```
+
+And a few that are not:
+```
+{ "name" : 1 }
+{ "name" : null }
+{ "name" : [ "Spock" ], "age" : 123 }
+{ "bar" : 1, "name" : { "first" : "James", "last" : "Kirk" }
+```
