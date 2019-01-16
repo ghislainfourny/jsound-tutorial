@@ -512,6 +512,69 @@ As a reminder, "?" is a shortcut for "|null".
 
 JSound also has predefined types: "atomic" contains all atomic values (it can be seen as the union of all of atomic types). "object" contains all objects, "array" contains all arrays and "value" contains any JSON values: atomic, object or array.
 
+## Annotation
+
+JSound 2.0 also supports annotation. Annotation means that an input instance is taken, and a TYSON instance is output. TYSON is simply JSON with type annotations.
+
+For example, let us consider the following schema:
+
+```
+{
+  "person" : {
+    "first" : "string",
+    "middle" : "string?",
+    "last" : "string=N/A",
+    "age" : "integer",
+    "picture" : "hexBinary"
+  },
+  "persons" : { "list" : [ "person" ] }
+}
+```
+
+And the following instance, valid against the type persons:
+
+```
+{
+  "list" : [
+    {
+      "first" : "James",
+      "middle" : null,
+      "last" : "Kirk",
+      "picture" : "0123456789abcdef"
+    },
+    {
+      "first" : "Spock",
+      "middle" : "S",
+      "picture" : "aaaaaaaaaaaaaaaaaaa"
+    }
+  ]
+}
+```
+
+Annotation will output the following TYSON instance, where all values are associated with a type, and default values are populated:
+
+```
+{
+  "list" : ("persons") [
+    ("person") {
+      "first" : ("string") "James",
+      "middle" : ("null") null,
+      "last" : ("string") "Kirk",
+      "picture" : ("hexBinary") "0123456789abcdef"
+    },
+    ("person") {
+      "first" : ("string") "Spock",
+      "middle" : ("string") "S",
+      "last" : ("string") "N/A",
+      "picture" : ("hexBinary") "aaaaaaaaaaaaaaaaaaa"
+    }
+  ]
+}
+```
+
+This TYSON instance can be sent over the network to somebody else (together with the corresponding schema containing the type definitions), stored somewhere for later processing, converted to a language's data model, for example a Java object, and so on.
+
+
 ## Advanced syntax
 
 Whenever advanced functionality is needed, such as names with special characters, disallowing extra fields, ..., the schema designer can switch to the advanced, more verbose JSound syntax, which still builds on the same type system and data model. Another tutorial will cover it.
