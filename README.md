@@ -527,7 +527,8 @@ For example, let us consider the following schema:
     "age" : "integer",
     "picture" : "hexBinary"
   },
-  "persons" : { "list" : [ "person" ] }
+  "persons-array" : [ "person" ],
+  "persons" : { "list" : "persons-array" }
 }
 ```
 
@@ -554,8 +555,8 @@ And the following instance, valid against the type persons:
 Annotation will output the following TYSON instance, where all values are associated with a type, and default values are populated:
 
 ```
-{
-  "list" : ("persons") [
+("persons") {
+  "list" : ("persons-array") [
     ("person") {
       "first" : ("string") "James",
       "middle" : ("null") null,
