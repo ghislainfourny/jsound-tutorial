@@ -250,6 +250,7 @@ The following instances are valid:
 
 ```
 { "field" : "8a08b0c0908f" }
+```
 
 ### date
 
