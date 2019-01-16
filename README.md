@@ -129,7 +129,9 @@ The validation of an atomic type is done based on its lexical value. Whether it 
 
 We provide below the list of builtin types, and for simplicity simple give examples of valid instances.
 
-For all examples, we a very simple schema with just one field that has the builtin type being explained.
+For all examples, we give a very simple schema with just one field that has the builtin type being explained.
+
+For further reference, these types (except null) are documented in the [XML Schema](https://www.w3.org/TR/xmlschema11-2) specification.
 
 ### integer
 
@@ -249,8 +251,108 @@ The following instances are valid:
 ```
 { "field" : "8a08b0c0908f" }
 
-- date
-- dateTime
-- time
-- dateTimeStamp
-- duration
+### date
+
+```
+{
+  "my-type" : {
+    "field!" : "date"
+  }
+}
+```
+The following instances are valid:
+
+```
+{ "field" : "2019-01-19" }
+```
+
+
+### dateTime
+
+```
+{
+  "my-type" : {
+    "field!" : "dateTime"
+  }
+}
+```
+The following instances are valid:
+
+```
+{ "field" : "2019-01-19T12:00:00" }
+{ "field" : "2019-01-19T12:34:56.789" }
+{ "field" : "2019-01-19T12:00:00.000Z" }
+{ "field" : "2019-01-19T12:00:00.000+02:00" }
+```
+
+### time
+
+```
+{
+  "my-type" : {
+    "field!" : "time"
+  }
+}
+```
+The following instances are valid:
+
+```
+{ "field" : "12:00:00" }
+{ "field" : "12:34:56.789" }
+{ "field" : "12:00:00.000Z" }
+{ "field" : "12:00:00.000+02:00" }
+```
+### dateTimeStamp
+
+
+```
+{
+  "my-type" : {
+    "field!" : "dateTimeStamp"
+  }
+}
+```
+The following instances are valid:
+
+```
+{ "field" : "2019-01-19T12:34:56.789-08:00" }
+{ "field" : "2019-01-19T12:00:00.000Z" }
+{ "field" : "2019-01-19T12:00:00.000+02:00" }
+```
+
+### duration
+
+```
+{
+  "my-type" : {
+    "field!" : "duration"
+  }
+}
+```
+The following instances are valid:
+
+```
+{ "field" : "P1Y2M3DT4H5M6S" }
+{ "field" : "P1Y2M3D" }
+{ "field" : "P3D" }
+{ "field" : "P3DT4H5M6S" }
+{ "field" : "PT4H5M6S" }
+{ "field" : "PT6S" }
+```
+
+
+### null
+
+```
+{
+  "my-type" : {
+    "field!" : "null"
+  }
+}
+```
+The following instances are valid:
+
+```
+{ "field" : null }
+{ "field" : "null" }
+```
