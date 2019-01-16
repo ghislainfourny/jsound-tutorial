@@ -1,6 +1,6 @@
 # Getting started with JSound 2.0
 
-This tutorial gives an introduction to JSound 2.0, starting with its compact syntax.
+This tutorial gives an introduction to [JSound 2.0](http://www.jsound-spec.org/), starting with its compact syntax.
 
 ## JSound's type system
 
