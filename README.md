@@ -67,3 +67,44 @@ And a few that are not:
 { "name" : [ "Spock" ], "age" : 123 }
 { "bar" : 1, "name" : { "first" : "James", "last" : "Kirk" }
 ```
+
+In order to make the name field required, we can add an exclamation mark, like so:
+
+```
+{
+  "my-type" : {
+    "name!" : "string"
+  }
+}
+```
+
+Then, these documents become invalid:
+
+```
+{ }
+{ "century" : 23 }
+```
+
+We can also supply a default value, like so:
+
+```
+{
+  "my-type" : {
+    "name" : "string=N/A"
+  }
+}
+```
+
+Then the following instances would be valid:
+
+```
+{ }
+{ "century" : 23 }
+```
+
+But an annotation step would actual produce a different output, populating default values:
+
+```
+{ "name" : "N/A" }
+{ "century" : 23, "name" : "N/A"  }
+```
