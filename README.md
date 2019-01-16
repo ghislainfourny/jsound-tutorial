@@ -491,3 +491,27 @@ But not this one:
 ## Union types
 
 Unions can be defined in field types with the | symbol.
+
+```
+{
+  "my-type" : {
+    "integers-or-booleans" : [ "integer|boolean" ]
+  }
+}
+```
+
+Valid instance:
+
+```
+{ "integers-or-booleans" : [ 1, 3, true, 4, false ] }
+```
+
+As a reminder, "?" is a shortcut for "|null".
+
+### Predefined types
+
+JSound also has predefined types: "atomic" contains all atomic values (it can be seen as the union of all of atomic types). "object" contains all objects, "array" contains all arrays and "value" contains any JSON values: atomic, object or array.
+
+## Advanced syntax
+
+Whenever advanced functionality is needed, such as names with special characters, disallowing extra fields, ..., the schema designer can switch to the advanced, more verbose JSound syntax, which still builds on the same type system and data model. Another tutorial will cover it.
