@@ -65,7 +65,7 @@ And a few that are not:
 { "name" : 1 }
 { "name" : null }
 { "name" : [ "Spock" ], "age" : 123 }
-{ "bar" : 1, "name" : { "first" : "James", "last" : "Kirk" }
+{ "bar" : 1, "name" : { "first" : "James", "last" : "Kirk" } }
 ```
 
 ## More on object type declarations
@@ -387,7 +387,13 @@ We can also nest type declarations and, for example, define an array of objects 
 ```
 {
   "my-type" : {
-    "field!" : [ { "first!" : "string", "last!" : "string=N/A", "age!" : "integer" } ]
+    "field!" : [
+      {
+        "first!" : "string",
+        "last!" : "string=N/A",
+        "age!" : "integer"
+      }
+    ]
   }
 }
 ```
@@ -396,21 +402,25 @@ The following instances are valid -- as you can see, the schema looks very simil
 
 ```
 { "field" : [ { "first" : "James", "last" : "Kirk", "age" : 30 } ]
-{ "field" :
-  [
+{
+  "field" : [
     { "first" : "James", "last" : "Kirk", "age" : 30 },
     { "first" : "Kathryn", "last" : "Janeway", "age" : 50 },
     { "first" : "Spock", "age" : 234 }
   ]
 }
-{ "field" : [ ]
+{ "field" : [ ] }
 ```
 
 It is also possible to name the object type and refer to it. The following schema is equivalent:
 
 ```
 {
-  "person" : { "first!" : "string", "last!" : "string=N/A", "age!" : "integer" },
+  "person" : {
+    "first!" : "string",
+    "last!" : "string=N/A",
+    "age!" : "integer"
+  },
   "list" : {
     "field!" : [ "person" ]
   }
@@ -422,7 +432,14 @@ It is also possible to require uniqueness within an array of objects. For exampl
 ```
 {
   "my-type" : {
-    "field!" : [ { "id@" : "integer", "first!" : "string", "last!" : "string=N/A", "age!" : "integer" } ]
+    "field!" : [
+      {
+        "id@" : "integer",
+        "first!" : "string",
+        "last!" : "string=N/A",
+        "age!" : "integer"
+      }
+    ]
   }
 }
 ```
@@ -430,8 +447,8 @@ It is also possible to require uniqueness within an array of objects. For exampl
 The following instance is then valid:
 
 ```
-{ "field" :
-  [
+{
+  "field" : [
     { "id" : 1, "first" : "James", "last" : "Kirk", "age" : 30 },
     { "id" : 2, "first" : "Kathryn", "last" : "Janeway", "age" : 50 },
     { "id" : 3, "first" : "Spock", "age" : 234 }
@@ -442,8 +459,8 @@ The following instance is then valid:
 But not this one:
 
 ```
-{ "field" :
-  [
+{
+  "field" : [
     { "id" : 1, "first" : "James", "last" : "Kirk", "age" : 30 },
     { "id" : 2, "first" : "Kathryn", "last" : "Janeway", "age" : 50 },
     { "id" : 2, "first" : "Spock", "age" : 234 }
