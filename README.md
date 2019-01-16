@@ -89,6 +89,8 @@ Then, these documents become invalid:
 { "century" : 23 }
 ```
 
+Type names containing ! are possible, but this requires the advanced syntax, covered later.
+
 ### Default value
 
 We can also supply a default value, like so:
@@ -115,8 +117,69 @@ But an annotation step would actual produce a different output, populating defau
 { "century" : 23, "name" : "N/A"  }
 ```
 
+Default values containing = are possible, but this requires the advanced syntax, covered later.
+
 More advanced features are available, such as not allowing extra fields, but we will cover this later with the advanced syntax.
 
-## More atomic types
+## More builtin atomic types
 
+We used so far the string builtin type. There are a few others builtin atomic types.
 
+The validation of an atomic type is done based on its lexical value. Whether it is quoted or not is totally irrelevant, as long as the input is well-formed JSON.
+
+We provide below the list of builtin types, and for simplicity simple give examples of valid literals.
+
+### integer
+
+This includes literals such as
+
+```
+1
+3
+12
+0
+-3
+123450987234502983452345.
+```
+### decimal
+
+```
+1
+3
+12.3
+0
+-334.23
+123450987234502983452345.23405978234059872345023945809823745
+```
+
+### double
+
+```
+1
+3
+12.3
+2345e78
+-1234.2345e-345
+```
+### boolean
+
+```
+true
+false
+```
+
+### anyURI
+
+```
+http://www.example.com
+```
+
+(Actually, any string is accepted, but it signals an intent to include URIs).
+
+- base64Binary
+- hexBinary
+- date
+- dateTime
+- time
+- dateTimeStamp
+- duration
