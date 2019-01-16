@@ -121,6 +121,26 @@ Default values containing = are possible, but this requires the advanced syntax,
 
 More advanced features are available, such as not allowing extra fields, but we will cover this later with the advanced syntax.
 
+### nullability
+
+A question mark indicates that null is allowed:
+
+```
+{
+  "my-type" : {
+    "name" : "string?"
+  }
+}
+```
+
+This instance is then valid:
+
+```
+{ "name" : null }
+```
+
+Technically, what is defined here is a union type with the member types string and null.
+
 ## More builtin atomic types
 
 We used so far the string builtin type. There are a few others builtin atomic types.
