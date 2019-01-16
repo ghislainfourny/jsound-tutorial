@@ -357,3 +357,96 @@ The following instances are valid:
 { "field" : null }
 { "field" : "null" }
 ```
+
+## Arrays
+
+Array types can be defined in the simplified syntax as well by specifying the type of its members.
+
+For example, we can define an array of integers like so:
+
+```
+{
+  "my-type" : {
+    "field!" : [ "integer" ]
+  }
+}
+```
+
+The following instances are valid:
+
+```
+{ "field" : [ 1, 2, 3, 4 ] }
+{ "field" : [ 1 ] }
+{ "field" : [ ] }
+```
+
+### Arrays of objects
+
+We can also nest type declarations and, for example, define an array of objects matching a certain type:
+
+```
+{
+  "my-type" : {
+    "field!" : [ { "first!" : "string", "last!" : "string=N/A", "age!" : "integer" } ]
+  }
+}
+```
+
+The following instances are valid -- as you can see, the schema looks very similar to them, which makes it easy to read:
+
+```
+{ "field" : [ { "first" : "James", "last" : "Kirk", "age" : 30 } ]
+{ "field" :
+  [
+    { "first" : "James", "last" : "Kirk", "age" : 30 },
+    { "first" : "Kathryn", "last" : "Janeway", "age" : 50 },
+    { "first" : "Spock", "age" : 234 }
+  ]
+}
+{ "field" : [ ]
+```
+
+It is also possible to name the object type and refer to it. The following schema is equivalent:
+
+```
+{
+  "person" : { "first!" : "string", "last!" : "string=N/A", "age!" : "integer" },
+  "list" : {
+    "field!" : [ "person" ]
+  }
+}
+```
+
+It is also possible to require uniqueness within an array of objects. For example, we can require that persons have different IDs with the @ symbol:
+
+```
+{
+  "my-type" : {
+    "field!" : [ { "id@" : "integer", "first!" : "string", "last!" : "string=N/A", "age!" : "integer" } ]
+  }
+}
+```
+
+The following instance is then valid:
+
+```
+{ "field" :
+  [
+    { "id" : 1, "first" : "James", "last" : "Kirk", "age" : 30 },
+    { "id" : 2, "first" : "Kathryn", "last" : "Janeway", "age" : 50 },
+    { "id" : 3, "first" : "Spock", "age" : 234 }
+  ]
+}
+```
+
+But not this one:
+
+```
+{ "field" :
+  [
+    { "id" : 1, "first" : "James", "last" : "Kirk", "age" : 30 },
+    { "id" : 2, "first" : "Kathryn", "last" : "Janeway", "age" : 50 },
+    { "id" : 2, "first" : "Spock", "age" : 234 }
+  ]
+}
+```
