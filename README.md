@@ -487,3 +487,7 @@ But not this one:
   ]
 }
 ```
+
+## Union types
+
+Unions can be defined in field types with the | symbol.
