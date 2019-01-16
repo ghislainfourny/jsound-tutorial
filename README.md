@@ -127,57 +127,128 @@ We used so far the string builtin type. There are a few others builtin atomic ty
 
 The validation of an atomic type is done based on its lexical value. Whether it is quoted or not is totally irrelevant, as long as the input is well-formed JSON.
 
-We provide below the list of builtin types, and for simplicity simple give examples of valid literals.
+We provide below the list of builtin types, and for simplicity simple give examples of valid instances.
+
+For all examples, we a very simple schema with just one field that has the builtin type being explained.
 
 ### integer
 
-This includes literals such as
+```
+{
+  "my-type" : {
+    "field!" : "integer"
+  }
+}
+```
+
+The following instances are valid:
 
 ```
-1
-3
-12
-0
--3
-123450987234502983452345.
+{ "field" : 1 }
+{ "field" : 3 }
+{ "field" : "12" }
+{ "field" : 0 }
+{ "field" : -3 }
+{ "field" : 123450987234502983452345 }
 ```
 ### decimal
 
 ```
-1
-3
-12.3
-0
--334.23
-123450987234502983452345.23405978234059872345023945809823745
+{
+  "my-type" : {
+    "field!" : "decimal"
+  }
+}
+```
+The following instances are valid:
+
+```
+{ "field" : 1 }
+{ "field" : 3 }
+{ "field" : 12.3 }
+{ "field" : 0 }
+{ "field" : "-334.23" }
+{ "field" : 123450987234502983452345.23405978234059872345023945809823745 }
 ```
 
 ### double
 
 ```
-1
-3
-12.3
-2345e78
--1234.2345e-345
+{
+  "my-type" : {
+    "field!" : "double"
+  }
+}
+```
+The following instances are valid:
+```
+{ "field" : 1 }
+{ "field" : 3 }
+{ "field" : 12.3 }
+{ "field" : "2345e78" }
+{ "field" : -1234.2345e-345 }
 ```
 ### boolean
+```
+{
+  "my-type" : {
+    "field!" : "boolean"
+  }
+}
+```
+The following instances are valid:
 
 ```
-true
-false
+{ "field" : true }
+{ "field" : "false" }
 ```
 
 ### anyURI
 
 ```
-http://www.example.com
+{
+  "my-type" : {
+    "field!" : "anyURI"
+  }
+}
+```
+The following instances are valid:
+
+```
+{ "field" : "http://www.example.com" }
 ```
 
 (Actually, any string is accepted, but it signals an intent to include URIs).
 
-- base64Binary
-- hexBinary
+### base64Binary
+
+```
+{
+  "my-type" : {
+    "field!" : "base64Binary"
+  }
+}
+```
+The following instances are valid:
+
+```
+{ "field" : "SGVsbG8sIHdvcmxk" }
+```
+
+### hexBinary
+
+```
+{
+  "my-type" : {
+    "field!" : "hexBinary"
+  }
+}
+```
+The following instances are valid:
+
+```
+{ "field" : "8a08b0c0908f" }
+
 - date
 - dateTime
 - time
