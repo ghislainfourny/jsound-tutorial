@@ -2,7 +2,7 @@
 
 This tutorial gives an introduction to JSound 2.0, starting with its compact syntax.
 
-# JSound's type system
+## JSound's type system
 
 JSound 2.0 is a schema language that validates and annotates JSON documents.
 
@@ -15,7 +15,7 @@ JSound supports four kinds of types corresponding to JSON's spirit:
 - array types, to validate and annotate JSON arrays
 - union types, to combine several types and union their value spaces
 
-# A hello world
+## A hello world
 
 Let us start with a simple example.
 
@@ -68,6 +68,10 @@ And a few that are not:
 { "bar" : 1, "name" : { "first" : "James", "last" : "Kirk" }
 ```
 
+## More on object type declarations
+
+### Requiring a field
+
 In order to make the name field required, we can add an exclamation mark, like so:
 
 ```
@@ -84,6 +88,8 @@ Then, these documents become invalid:
 { }
 { "century" : 23 }
 ```
+
+### Default value
 
 We can also supply a default value, like so:
 
@@ -108,3 +114,9 @@ But an annotation step would actual produce a different output, populating defau
 { "name" : "N/A" }
 { "century" : 23, "name" : "N/A"  }
 ```
+
+More advanced features are available, such as not allowing extra fields, but we will cover this later with the advanced syntax.
+
+## More atomic types
+
+
