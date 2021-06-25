@@ -77,7 +77,7 @@ In order to make the name field required, we can add an exclamation mark, like s
 ```
 {
   "my-type" : {
-    "name!" : "string"
+    "!name" : "string"
   }
 }
 ```
@@ -158,7 +158,7 @@ For further reference, these types (except null) are documented in the [XML Sche
 ```
 {
   "my-type" : {
-    "field!" : "integer"
+    "!field" : "integer"
   }
 }
 ```
@@ -178,7 +178,7 @@ The following instances are valid:
 ```
 {
   "my-type" : {
-    "field!" : "decimal"
+    "!field" : "decimal"
   }
 }
 ```
@@ -198,7 +198,7 @@ The following instances are valid:
 ```
 {
   "my-type" : {
-    "field!" : "double"
+    "!field" : "double"
   }
 }
 ```
@@ -214,7 +214,7 @@ The following instances are valid:
 ```
 {
   "my-type" : {
-    "field!" : "boolean"
+    "!field" : "boolean"
   }
 }
 ```
@@ -230,7 +230,7 @@ The following instances are valid:
 ```
 {
   "my-type" : {
-    "field!" : "anyURI"
+    "!field" : "anyURI"
   }
 }
 ```
@@ -247,7 +247,7 @@ The following instances are valid:
 ```
 {
   "my-type" : {
-    "field!" : "base64Binary"
+    "!field" : "base64Binary"
   }
 }
 ```
@@ -262,7 +262,7 @@ The following instances are valid:
 ```
 {
   "my-type" : {
-    "field!" : "hexBinary"
+    "!field" : "hexBinary"
   }
 }
 ```
@@ -277,7 +277,7 @@ The following instances are valid:
 ```
 {
   "my-type" : {
-    "field!" : "date"
+    "!field" : "date"
   }
 }
 ```
@@ -293,7 +293,7 @@ The following instances are valid:
 ```
 {
   "my-type" : {
-    "field!" : "dateTime"
+    "!field" : "dateTime"
   }
 }
 ```
@@ -311,7 +311,7 @@ The following instances are valid:
 ```
 {
   "my-type" : {
-    "field!" : "time"
+    "!field" : "time"
   }
 }
 ```
@@ -329,7 +329,7 @@ The following instances are valid:
 ```
 {
   "my-type" : {
-    "field!" : "dateTimeStamp"
+    "!field" : "dateTimeStamp"
   }
 }
 ```
@@ -346,7 +346,7 @@ The following instances are valid:
 ```
 {
   "my-type" : {
-    "field!" : "duration"
+    "!field" : "duration"
   }
 }
 ```
@@ -367,7 +367,7 @@ The following instances are valid:
 ```
 {
   "my-type" : {
-    "field!" : "null"
+    "!field" : "null"
   }
 }
 ```
@@ -387,7 +387,7 @@ For example, we can define an array of integers like so:
 ```
 {
   "my-type" : {
-    "field!" : [ "integer" ]
+    "!field" : [ "integer" ]
   }
 }
 ```
@@ -407,11 +407,11 @@ We can also nest type declarations and, for example, define an array of objects 
 ```
 {
   "my-type" : {
-    "field!" : [
+    "!field" : [
       {
-        "first!" : "string",
-        "last!" : "string=N/A",
-        "age!" : "integer"
+        "!first" : "string",
+        "!last" : "string=N/A",
+        "!age" : "integer"
       }
     ]
   }
@@ -437,12 +437,12 @@ It is also possible to name the object type and refer to it. The following schem
 ```
 {
   "person" : {
-    "first!" : "string",
-    "last!" : "string=N/A",
-    "age!" : "integer"
+    "!first" : "string",
+    "!last" : "string=N/A",
+    "!age" : "integer"
   },
   "list" : {
-    "field!" : [ "person" ]
+    "!field" : [ "person" ]
   }
 }
 ```
@@ -452,12 +452,12 @@ It is also possible to require uniqueness within an array of objects. For exampl
 ```
 {
   "my-type" : {
-    "field!" : [
+    "!field" : [
       {
         "id@" : "integer",
-        "first!" : "string",
-        "last!" : "string=N/A",
-        "age!" : "integer"
+        "!first" : "string",
+        "!last" : "string=N/A",
+        "!age" : "integer"
       }
     ]
   }
