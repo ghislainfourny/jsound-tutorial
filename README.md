@@ -2,6 +2,8 @@
 
 This tutorial gives an introduction to [JSound 2.0](https://www.jsoniq.org/docs/JSound2-C/2.0/html-single/JSound-C/index.html), starting with its compact syntax.
 
+You can these examples with the [JSONiq](https://www.jsoniq.org/), for example in Jupyter notebooks. JSONiq supports user-defined types defined with both the verbose and the compact JSound syntax.
+
 ## JSound's type system
 
 JSound 2.0 is a schema language that validates and annotates JSON documents.
