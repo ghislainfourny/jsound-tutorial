@@ -130,7 +130,7 @@ A question mark indicates that null is allowed:
 ```
 {
   "my-type" : {
-    "name" : "string?"
+    "name?" : "string"
   }
 }
 ```
@@ -456,7 +456,7 @@ It is also possible to require uniqueness within an array of objects. For exampl
   "my-type" : {
     "!field" : [
       {
-        "id@" : "integer",
+        "@id" : "integer",
         "!first" : "string",
         "!last" : "string=N/A",
         "!age" : "integer"
@@ -524,7 +524,7 @@ For example, let us consider the following schema:
 {
   "person" : {
     "first" : "string",
-    "middle" : "string?",
+    "middle?" : "string",
     "last" : "string=N/A",
     "age" : "integer",
     "picture" : "hexBinary"
